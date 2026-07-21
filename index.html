@@ -89,7 +89,17 @@
       <div class="section-label reveal"><span>04</span> Start something</div>
       <div class="contact-grid reveal">
         <h2>Have a story<br>worth telling?</h2>
-        <div><p>Tell us where you want to go.<br>We’ll help you find the frame.</p><a href="mailto:theo@compassmediasa.co.za">theo@compassmediasa.co.za <span>↗</span></a></div>
+        <div>
+          <p>Tell us where you want to go.<br>We’ll help you find the frame.</p>
+          <form class="contact-form" id="contact-form">
+            <label for="contact-email">Email address</label>
+            <input id="contact-email" name="email" type="email" autocomplete="email" required>
+            <label for="contact-phone">Phone number</label>
+            <input id="contact-phone" name="phone" type="tel" autocomplete="tel" required>
+            <button type="submit">Start a project <span aria-hidden="true">↗</span></button>
+          </form>
+          <a class="contact-email" href="mailto:theo@compassmediasa.co.za">theo@compassmediasa.co.za <span>↗</span></a>
+        </div>
       </div>
     </section>
   </main>
