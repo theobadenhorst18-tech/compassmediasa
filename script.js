@@ -31,7 +31,25 @@ contactForm.addEventListener('submit', event => {
   if (!contactForm.reportValidity()) return;
 
   const data = new FormData(contactForm);
-  const subject = encodeURIComponent('New project enquiry from Compass Media website');
-  const body = encodeURIComponent(`Email: ${data.get('email')}\nPhone: ${data.get('phone')}`);
-  window.location.href = `mailto:theo@compassmediasa.co.za?subject=${subject}&body=${body}`;
+  const submitButton = contactForm.querySelector('button[type="submit"]');
+  const status = document.querySelector('#form-status');
+  submitButton.disabled = true;
+  status.textContent = 'Sending…';
+
+  fetch('/api/contact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(Object.fromEntries(data))
+  }).then(response => {
+    if (!response.ok) throw new Error('Delivery failed');
+    contactForm.reset();
+    status.textContent = 'Thanks — your enquiry has been sent.';
+  }).catch(() => {
+    status.textContent = 'Opening your email app to finish sending…';
+    const subject = encodeURIComponent('New project enquiry from Compass Media website');
+    const body = encodeURIComponent(`Email: ${data.get('email')}\nPhone: ${data.get('phone')}\n\nMessage:\n${data.get('message') || '(No message provided)'}`);
+    window.location.href = `mailto:theo@compassmediasa.co.za?subject=${subject}&body=${body}`;
+  }).finally(() => {
+    submitButton.disabled = false;
+  });
 });

@@ -96,7 +96,11 @@
             <input id="contact-email" name="email" type="email" autocomplete="email" required>
             <label for="contact-phone">Phone number</label>
             <input id="contact-phone" name="phone" type="tel" autocomplete="tel" required>
+            <label for="contact-message">Message <span>(optional)</span></label>
+            <textarea id="contact-message" name="message" rows="4" maxlength="5000"></textarea>
+            <div class="form-honeypot" aria-hidden="true"><label for="contact-website">Website</label><input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
             <button type="submit">Start a project <span aria-hidden="true">↗</span></button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
           </form>
           <a class="contact-email" href="mailto:theo@compassmediasa.co.za">theo@compassmediasa.co.za <span>↗</span></a>
         </div>
