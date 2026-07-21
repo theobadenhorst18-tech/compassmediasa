@@ -24,3 +24,14 @@ window.addEventListener('pointermove', event => {
 });
 
 document.querySelector('#year').textContent = new Date().getFullYear();
+
+const contactForm = document.querySelector('#contact-form');
+contactForm.addEventListener('submit', event => {
+  event.preventDefault();
+  if (!contactForm.reportValidity()) return;
+
+  const data = new FormData(contactForm);
+  const subject = encodeURIComponent('New project enquiry from Compass Media website');
+  const body = encodeURIComponent(`Email: ${data.get('email')}\nPhone: ${data.get('phone')}`);
+  window.location.href = `mailto:theo@compassmediasa.co.za?subject=${subject}&body=${body}`;
+});

@@ -20,6 +20,7 @@
 .statement h2 em{color:var(--gold)}
 .contact{background:#e8dfd6}
 .contact-grid a span{color:var(--navy)}
+.contact-form{display:grid;gap:10px;margin:0 0 35px}.contact-form label{font:500 10px DM Mono,monospace;text-transform:uppercase;letter-spacing:.12em}.contact-form input{width:100%;border:0;border-bottom:1px solid var(--navy);background:transparent;color:var(--navy);font:15px Manrope,Arial,sans-serif;padding:10px 0 12px;outline:none}.contact-form input:focus{border-bottom-width:2px}.contact-form button{display:flex;justify-content:space-between;align-items:center;margin-top:14px;border:1px solid var(--navy);background:var(--navy);color:var(--paper);padding:14px 16px;cursor:pointer;font:500 11px DM Mono,monospace;text-transform:uppercase;letter-spacing:.1em}.contact-form button:hover{background:transparent;color:var(--navy)}.contact-email{margin-top:0}
 .brand-logo{background:var(--paper)}
 .cursor-glow{background:rgba(200,145,82,.07)}
 .circle-link{left:auto;right:4vw;top:50%;z-index:3}
