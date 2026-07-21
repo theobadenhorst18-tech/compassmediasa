@@ -1,5 +1,3 @@
-const nodemailer = require('nodemailer');
-
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 module.exports = async function handler(request, response) {
@@ -21,35 +19,39 @@ module.exports = async function handler(request, response) {
     return response.status(400).json({ error: 'A valid email address and phone number are required.' });
   }
 
-  const smtpUser = process.env.GOOGLE_SMTP_USER;
-  const smtpPassword = process.env.GOOGLE_SMTP_APP_PASSWORD;
-  const recipient = process.env.CONTACT_EMAIL || smtpUser;
+  const apiKey = process.env.RESEND_API_KEY;
+  const recipient = process.env.CONTACT_EMAIL || 'theo@compassmediasa.co.za';
 
-  if (!smtpUser || !smtpPassword || !recipient) {
+  if (!apiKey || !recipient) {
     return response.status(503).json({ error: 'Email delivery is not configured.' });
   }
 
-  const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-    auth: { user: smtpUser, pass: smtpPassword }
-  });
-
   try {
-    await transporter.sendMail({
-      from: `Compass Media Website <${smtpUser}>`,
-      to: recipient,
-      replyTo: cleanEmail,
-      subject: 'New project enquiry from Compass Media website',
-      text: [
-        `Email: ${cleanEmail}`,
-        `Phone: ${cleanPhone}`,
-        '',
-        'Message:',
-        cleanMessage || '(No message provided)'
-      ].join('\n')
+    const resendResponse = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        from: 'Compass Media Website <website@compassmediasa.co.za>',
+        to: [recipient],
+        reply_to: cleanEmail,
+        subject: 'New project enquiry from Compass Media website',
+        text: [
+          `Email: ${cleanEmail}`,
+          `Phone: ${cleanPhone}`,
+          '',
+          'Message:',
+          cleanMessage || '(No message provided)'
+        ].join('\n')
+      })
     });
+
+    if (!resendResponse.ok) {
+      const details = await resendResponse.text();
+      throw new Error(`Resend rejected the email (${resendResponse.status}): ${details}`);
+    }
 
     return response.status(200).json({ ok: true });
   } catch (error) {
