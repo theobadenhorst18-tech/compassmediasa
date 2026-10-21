@@ -40,7 +40,7 @@
 .project-arrow:hover,.project-arrow:focus-visible{background:var(--gold);border-color:var(--gold);color:var(--navy-deep);transform:translateY(-2px);outline:none}
 .projects{display:flex;gap:4vw;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding-bottom:8px}
 .projects::-webkit-scrollbar{display:none}
-.project{flex:0 0 min(78vw,960px);scroll-snap-align:start;margin:0}.project-c{width:auto;margin-left:0}
+.project{flex:0 0 100%;scroll-snap-align:start;margin:0}.project-c{width:auto;margin-left:0}
 .project-video-frame{height:auto;aspect-ratio:16 / 9;display:grid;place-items:center}
 .project-video-frame video{object-fit:contain}
-@media(max-width:800px){.projects{gap:18px}.project{flex-basis:90vw}.project-video-frame{height:auto;aspect-ratio:16 / 9}.project-controls{margin-bottom:16px}}
+@media(max-width:800px){.projects{gap:18px}.project{flex-basis:100%}.project-video-frame{height:auto;aspect-ratio:16 / 9}.project-controls{margin-bottom:16px}}
