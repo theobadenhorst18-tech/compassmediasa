@@ -32,3 +32,15 @@
 @media(max-width:800px){.project-video-frame{height:410px}.project-video-frame video{object-fit:contain}}
 .lowveld-logo-link{display:block;width:220px;margin-top:18px;padding:10px 14px;background:var(--navy-deep);border:1px solid rgba(255,255,255,.18);transition:transform .25s ease,opacity .25s ease}.lowveld-logo-link:hover{transform:translateY(-2px);opacity:.88}.lowveld-logo-link img{display:block;width:100%;height:auto}
 @media(max-width:800px){.lowveld-logo-link{width:190px}}
+
+/* Project carousel: full video frames with pointer and keyboard controls. */
+.projects-carousel{position:relative}
+.project-controls{display:flex;justify-content:flex-end;gap:10px;margin:0 0 20px}
+.project-arrow{width:46px;height:46px;border:1px solid rgba(243,239,237,.55);border-radius:50%;background:transparent;color:var(--paper);cursor:pointer;font-size:20px;line-height:1;transition:background .2s,color .2s,transform .2s}
+.project-arrow:hover,.project-arrow:focus-visible{background:var(--gold);border-color:var(--gold);color:var(--navy-deep);transform:translateY(-2px);outline:none}
+.projects{display:flex;gap:4vw;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding-bottom:8px}
+.projects::-webkit-scrollbar{display:none}
+.project{flex:0 0 min(78vw,960px);scroll-snap-align:start;margin:0}.project-c{width:auto;margin-left:0}
+.project-video-frame{height:auto;aspect-ratio:16 / 9;display:grid;place-items:center}
+.project-video-frame video{object-fit:contain}
+@media(max-width:800px){.projects{gap:18px}.project{flex-basis:90vw}.project-video-frame{height:auto;aspect-ratio:16 / 9}.project-controls{margin-bottom:16px}}

@@ -54,7 +54,12 @@
         <div class="section-label"><span>02</span> Some of our projects</div>
         <p>Recent frames, made together.</p>
       </div>
-      <div class="projects">
+      <div class="projects-carousel reveal" aria-label="Selected projects">
+        <div class="project-controls">
+          <button class="project-arrow" type="button" data-project-direction="previous" aria-label="Show previous project">&#8592;</button>
+          <button class="project-arrow" type="button" data-project-direction="next" aria-label="Show next project">&#8594;</button>
+        </div>
+        <div class="projects" tabindex="0">
         <article class="project project-a reveal">
           <div class="project-video-frame">
             <video controls playsinline preload="metadata" aria-label="Godly Revolution 2026 promotional short">
@@ -73,6 +78,7 @@
           </div>
           <div class="project-meta"><h3>Godly Revolution 2026 Recap</h3><p>Recap &middot; Event</p><span>Play film</span></div>
         </article>
+        </div>
       </div>
     </section>
 

@@ -17,6 +17,15 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+const projects = document.querySelector('.projects');
+document.querySelectorAll('[data-project-direction]').forEach(button => {
+  button.addEventListener('click', () => {
+    const firstProject = projects.querySelector('.project');
+    const distance = firstProject.offsetWidth + parseFloat(getComputedStyle(projects).gap || 0);
+    projects.scrollBy({ left: button.dataset.projectDirection === 'next' ? distance : -distance, behavior: 'smooth' });
+  });
+});
+
 const glow = document.querySelector('.cursor-glow');
 window.addEventListener('pointermove', event => {
   glow.style.left = `${event.clientX}px`;
