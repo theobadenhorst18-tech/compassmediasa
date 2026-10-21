@@ -26,6 +26,15 @@ document.querySelectorAll('[data-project-direction]').forEach(button => {
   });
 });
 
+const projectVideos = document.querySelectorAll('.project video');
+projectVideos.forEach(video => {
+  video.addEventListener('play', () => {
+    projectVideos.forEach(otherVideo => {
+      if (otherVideo !== video) otherVideo.pause();
+    });
+  });
+});
+
 const glow = document.querySelector('.cursor-glow');
 window.addEventListener('pointermove', event => {
   glow.style.left = `${event.clientX}px`;
