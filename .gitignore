@@ -1,6 +1,8 @@
 # Unused source video exports kept locally
 media/godly/Godly Revoltion Medium Length Complete.mp4
 media/godly/Godly Revolution 2026 Promo Short Final.mp4
+media/godly/godly-revolution-2026-recap.mp4
 node_modules/
 .vercel/
 .env*
+.vercel
